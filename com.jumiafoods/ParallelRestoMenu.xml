@@ -1,0 +1,20 @@
+<suite thread-count="3" parallel="tests" name="Suite">
+  <test parallel="tests" name="Test runner-1">
+    <classes>
+      <class name="com.menu_module.MenuModule">
+      <methods>
+      	<include name="addMenu"/>
+      </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  <test parallel="tests" name="Test runner-2">
+    <classes>
+      <class name="com.restaurant_module.RestaurantModule">
+      <methods>
+      	<include name="addRestaurant"/>
+      </methods>
+      </class>
+    </classes>
+    </test>
+</suite> <!-- Suite -->

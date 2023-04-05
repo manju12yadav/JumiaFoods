@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="3" parallel="tests" name="Suite">
+  <test name="Test-1">
+   <parameter name="BROWSER" value="chrome"></parameter>
+    <classes>
+      <class name="com.menu_module.AddMenuTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Test-2">
+   <parameter name="BROWSER" value="firefox"></parameter>
+    <classes>
+      <class name="com.menu_module.AddMenuTest"/>
+    </classes>
+  </test>
+  <test name="Test-3">
+   <parameter name="BROWSER" value="edge"></parameter>
+    <classes>
+      <class name="com.menu_module.AddMenuTest"/>
+    </classes>
+  </test>
+</suite> <!-- Suite -->

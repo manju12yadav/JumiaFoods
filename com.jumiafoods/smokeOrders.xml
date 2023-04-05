@@ -1,0 +1,13 @@
+<suite thread-count="1" parallel="tests" name="Suite">
+<groups>
+<run>
+<include name="smoke" />
+</run>
+</groups>
+  <test thread-count="1"  name="Test">
+    <classes>
+      <class name="com.order_module.CreateOrderTest"/>
+      <class name="com.order_module.EditStatusTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,13 @@
+<suite thread-count="1" parallel="tests" name="Suite">
+<listeners>
+<listener class-name= "com.GenericUtilities.ListnerImplementation"/>
+</listeners>
+  <test name="Test">
+    <classes>
+      <class name="com.restaurant_module.AddRestaurantTest"/>
+      <class name="com.menu_module.AddMenuTest"/>
+      <class name="com.menu_module.EditMenuTest"/>      
+      <class name="com.restaurant_module.EditRestaurantTest"/>
+    </classes>
+  </test> 
+</suite> 
