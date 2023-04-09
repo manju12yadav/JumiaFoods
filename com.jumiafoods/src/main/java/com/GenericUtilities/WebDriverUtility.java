@@ -176,7 +176,7 @@ public class WebDriverUtility
 	 * @param driver
 	 */
 
-	public void enterKeyPress(WebDriver driver)
+	public void enterKey(WebDriver driver)
 	{
 		Actions a=new Actions(driver);
 		a.sendKeys(Keys.ENTER).perform();
@@ -188,7 +188,7 @@ public class WebDriverUtility
 	 * @throws AWTException
 	 */
 
-	public void enterKey() throws AWTException
+	public void enterKeyPress() throws AWTException
 	{
 		Robot r=new Robot();
 		r.keyPress(KeyEvent.VK_ENTER);
@@ -312,7 +312,7 @@ public class WebDriverUtility
 	{
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		JavaUtility jLib = new JavaUtility();
+		JavaUtility jLib=new JavaUtility();
 		int st = jLib.random();
 //		String sdt = new JavaUtility().formatSystemDate();
 		String path="./ScreenShot/"+screenShotName+st+".png";

@@ -8,7 +8,7 @@ import com.ObjectRepo.AdminPanelPage;
 import com.ObjectRepo.AllMenuesPage;
 import com.ObjectRepo.UpdateMenuPage;
 
-public class MenuModule extends BaseClass
+public class MenuModuleTest extends BaseClass
 {	
 	
 	@Test(groups = {"smoke","regression"})

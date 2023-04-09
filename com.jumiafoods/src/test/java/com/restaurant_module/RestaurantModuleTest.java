@@ -1,5 +1,6 @@
 package com.restaurant_module;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.GenericUtilities.BaseClass;
@@ -8,7 +9,8 @@ import com.ObjectRepo.AdminPanelPage;
 import com.ObjectRepo.AllRestaurantPage;
 import com.ObjectRepo.UpdateRestaurantPage;
 
-public class RestaurantModule extends BaseClass
+@Listeners(com.GenericUtilities.ListnerImplementation.class)
+public class RestaurantModuleTest extends BaseClass
 {
 
 	@Test(groups = {"smoke","regression"})

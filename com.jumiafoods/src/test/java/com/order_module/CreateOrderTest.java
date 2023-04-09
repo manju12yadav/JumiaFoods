@@ -13,7 +13,7 @@ import com.ObjectRepo.RestaurantsPage;
 @Listeners(com.GenericUtilities.ListnerImplementation.class)
 public class CreateOrderTest extends BaseClass2
 {
-	@Test(retryAnalyzer = com.GenericUtilities.RetryImplementation.class)
+	@Test
 	public void createOrder() throws Throwable
 	{
 		

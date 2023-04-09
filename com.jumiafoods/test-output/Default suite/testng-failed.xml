@@ -3,18 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.advanced.TC_02">
+      <class name="com.advanced.ShadowRoot">
         <methods>
-          <include name="crossBrowser2"/>
-          <include name="configAM"/>
-          <include name="crossBrowser1"/>
-          <include name="configBM"/>
-          <include name="configAS"/>
-          <include name="configAC"/>
-          <include name="configBS"/>
-          <include name="configBC"/>
+          <include name="searchDownloads"/>
         </methods>
-      </class> <!-- com.advanced.TC_02 -->
+      </class> <!-- com.advanced.ShadowRoot -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
