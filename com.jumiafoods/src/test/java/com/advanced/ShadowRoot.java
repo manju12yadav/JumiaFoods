@@ -16,10 +16,10 @@ public class ShadowRoot
 	@Test
 	public void searchDownloads()
 	{
-		ChromeOptions options=new ChromeOptions();
-		options.addArguments("remote.allow.origins");
+//		ChromeOptions options=new ChromeOptions();
+//		options.addArguments("remote.allow.origins");
 		WebDriverManager.chromedriver().setup();
-		WebDriver driver=new ChromeDriver(options);
+		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("chrome://downloads/");

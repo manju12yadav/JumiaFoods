@@ -44,7 +44,8 @@ public class BrokenLinks
 				{
 					brokenLink.add(link+" ===> Not Having HTTP Protocol");
 				}
-			}else
+			}
+			else
 			{
 				brokenLink.add(link +" ==> Null" );
 			}
@@ -64,12 +65,12 @@ public class BrokenLinks
 					brokenLink.add(link+" ==> Status code : "+statusCode+" ==>Response Msg :"+respoMsg);
 				}
 			}
-			catch (Exception e) {
+			catch (Exception e) 
+			{
 				brokenLink.add(link+" ===> Not Connected to Server ");
 			}
 		}
-		System.err.println(brokenLink);
+		System.out.println(brokenLink);
 		System.err.println(brokenLink.size());
-
 	}
 }

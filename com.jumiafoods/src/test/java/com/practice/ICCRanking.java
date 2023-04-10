@@ -23,11 +23,13 @@ public class ICCRanking
 		List<WebElement> matches = driver.findElements(By.xpath("//tbody/tr/td[3]"));
 		List<WebElement> points = driver.findElements(By.xpath("//tbody/tr/td[4]"));
 		List<WebElement> Rating = driver.findElements(By.xpath("//tbody/tr/td[5]"));
-		int count = pos.size();
-		for (int i = 0; i <count ; i++)
-		{		
+//		int count = pos.size();
+		for (int i = 0; i <5 ; i++)
+		{	
 			System.out.println(pos.get(i).getText()+" "+teams.get(i).getText()+"--->"+matches.get(i).getText()+"--->"+points.get(i).getText()+"--->"+Rating.get(i).getText());
 		}
+		
+		
 	}
 
 }

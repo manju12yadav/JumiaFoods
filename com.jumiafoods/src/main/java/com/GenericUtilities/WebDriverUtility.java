@@ -191,7 +191,7 @@ public class WebDriverUtility
 	public void enterKeyPress() throws AWTException
 	{
 		Robot r=new Robot();
-		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyPress(KeyEvent.VK_M);
 	}
 
 	/**
