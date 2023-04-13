@@ -14,6 +14,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import com.ObjectRepo.HomePageAfterLogin;
 import com.ObjectRepo.UserLoginPage;
@@ -37,7 +38,7 @@ public class BaseClass2
 		Reporter.log("--Connect to DB--",true);
 	}
 	
-//	@Parameters("BROWSER") String BROWSER
+	@Parameters("BROWSER")
 	@BeforeClass(alwaysRun = true)
 	public void configBC() throws IOException
 	{

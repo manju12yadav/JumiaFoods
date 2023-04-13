@@ -1,5 +1,5 @@
-<suite thread-count="3" parallel="tests" name="Suite">
-  <test parallel="tests" name="Test runner-1">
+<suite thread-count="3" parallel="methods" name="Suite">
+  <test parallel="methods" name="Test runner-1">
     <classes>
       <class name="com.menu_module.MenuModule">
       <methods>
@@ -8,7 +8,7 @@
       </class>
     </classes>
   </test> <!-- Test -->
-  <test parallel="tests" name="Test runner-2">
+  <test parallel="methods" name="Test runner-2">
     <classes>
       <class name="com.restaurant_module.RestaurantModule">
       <methods>

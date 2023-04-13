@@ -42,7 +42,7 @@ public class ListnerImplementation implements ITestListener
 //		JavaUtility jLib = new JavaUtility();
 //		int r = jLib.random();
 		String fScript = result.getMethod().getMethodName();
-		//				String fs = fScript+ new JavaUtility().getSystemDate();
+						String fs = fScript+ new JavaUtility().getSystemDate();
 //		String fs = fScript+r;
 		EventFiringWebDriver edriver=new EventFiringWebDriver(BaseClass.sdriver);
 		File src = edriver.getScreenshotAs(OutputType.FILE);
@@ -55,14 +55,14 @@ public class ListnerImplementation implements ITestListener
 			e.printStackTrace();
 		}
 
-		//		try {
-		//			String screenShotName = WebDriverUtility.getScreenShot(BaseClass2.sdriver,result.getMethod().getMethodName());
-		//			test.addScreenCaptureFromPath(screenShotName);
-		//		} 
-		//		catch (IOException e) 
-		//		{
-		//			e.printStackTrace();
-		//		}
+//				try {
+//					String screenShotName = WebDriverUtility.getScreenShot(BaseClass.sdriver,result.getMethod().getMethodName());
+//					test.addScreenCaptureFromPath(screenShotName);
+//				} 
+//				catch (IOException e) 
+//				{
+//					e.printStackTrace();
+//				}
 		test.log(Status.FAIL, result.getThrowable());
 		Reporter.log("TestScripts Execution Failed",true);
 

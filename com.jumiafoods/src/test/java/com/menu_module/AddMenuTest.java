@@ -1,6 +1,5 @@
 package com.menu_module;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -16,7 +15,6 @@ public class AddMenuTest extends BaseClass
 	{		
 		AdminPanelPage app=new AdminPanelPage(driver);
 		app.getMenuDrpdwn().click();
-		Assert.fail();
 		app.getAddMenuLink().click();
 		
 		AddMenuPage amp=new AddMenuPage(driver);

@@ -3,11 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.advanced.ShadowRoot">
+      <class name="com.menu_module.AddMenuTest">
         <methods>
-          <include name="searchDownloads"/>
+          <include name="configAM"/>
+          <include name="configBM"/>
+          <include name="configAS"/>
+          <include name="configAC"/>
+          <include name="addMenu"/>
+          <include name="configBS"/>
+          <include name="configBC"/>
         </methods>
-      </class> <!-- com.advanced.ShadowRoot -->
+      </class> <!-- com.menu_module.AddMenuTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

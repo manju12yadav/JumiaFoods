@@ -308,7 +308,7 @@ public class WebDriverUtility
 	 * @throws IOException
 	 * @author Manjunath Yadav
 	 */
-	public static void getScreenShot(WebDriver driver,String screenShotName) throws IOException
+	public static String getScreenShot(WebDriver driver,String screenShotName) throws IOException
 	{
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
@@ -318,6 +318,7 @@ public class WebDriverUtility
 		String path="./ScreenShot/"+screenShotName+st+".png";
 		File dest=new File(path);
 		FileUtils.copyFile(src, dest);
+		return path;
 	}
 	
 	/**
@@ -329,7 +330,7 @@ public class WebDriverUtility
 	public void scrollAction(WebDriver driver)
 	{
 		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,800)","");
+		js.executeScript("window.scrollBy(0,800)");
 	}
 	/**
 	 * This method will scroll until specified element is found

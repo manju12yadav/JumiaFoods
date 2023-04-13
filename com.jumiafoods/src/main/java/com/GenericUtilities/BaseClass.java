@@ -14,6 +14,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import com.ObjectRepo.AdminLoginPage;
 import com.ObjectRepo.AdminPanelPage;
@@ -35,13 +36,13 @@ public class BaseClass
 		dLib.connectToDB();
 		Reporter.log("--Connect to DB--",true);
 	}
-//	@Parameters("BROWSER")
+//	@Parameters("BROWSER")String BROWSER
 	@BeforeClass(alwaysRun = true)                                                                                                                                       
 	public void configBC() throws IOException
 	{
 		String URL = fLib.readFromPropertyFile("Aurl");
 		
-		String BROWSER = fLib.readFromPropertyFile("cbrowser");
+		String BROWSER = fLib.readFromPropertyFile("fbrowser");
 		if(BROWSER.equalsIgnoreCase("chrome"))
 		{
 			WebDriverManager.chromedriver().setup();
