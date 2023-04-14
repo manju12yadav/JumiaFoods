@@ -21,6 +21,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class WebDriverUtility 
 {
 	
@@ -310,6 +312,7 @@ public class WebDriverUtility
 	 */
 	public static String getScreenShot(WebDriver driver,String screenShotName) throws IOException
 	{
+		
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		JavaUtility jLib=new JavaUtility();
