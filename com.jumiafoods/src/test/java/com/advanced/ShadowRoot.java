@@ -25,7 +25,7 @@ public class ShadowRoot
 		driver.get("chrome://downloads/");
 		
 		JavascriptExecutor js=(JavascriptExecutor) driver;
-		WebElement search = (WebElement)js.executeScript("document.querySelector('downloads-manager').shadowRoot.querySelector('downloads-toolbar').shadowRoot.querySelector('#toolbar').shadowRoot.querySelector('#search').shadowRoot.querySelector('input')");
+		WebElement search = (WebElement)js.executeScript("return document.querySelector('downloads-manager').shadowRoot.querySelector('downloads-toolbar').shadowRoot.querySelector('#toolbar').shadowRoot.querySelector('#search').shadowRoot.querySelector('input')");
 		search.sendKeys("Jenkins");
 		
 	}

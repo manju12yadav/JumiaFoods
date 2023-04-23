@@ -5,17 +5,24 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -25,7 +32,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebDriverUtility 
 {
-	
+
 
 	/**
 	 * This method is used to Maximize the window
@@ -36,7 +43,7 @@ public class WebDriverUtility
 	{
 		driver.manage().window().maximize();
 	}
-	
+
 	/**
 	 * This method is used to Refresh the Page/Window
 	 * @param driver
@@ -54,14 +61,14 @@ public class WebDriverUtility
 	public void implicitWaitForLoad(WebDriver driver)
 	{
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+
 	}
 	/**
 	 * This method is used to Wait for page to load
 	 * @param driver
 	 * @author Manjunath Yadav
 	 */
-	
+
 	public void waitForPageLoad(WebDriver driver)
 	{
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
@@ -240,7 +247,7 @@ public class WebDriverUtility
 	{
 		driver.switchTo().frame(nameID);
 	}
-	
+
 	/**
 	 * This method is used to get the text of alert popup
 	 * @param driver
@@ -259,7 +266,7 @@ public class WebDriverUtility
 	{
 		driver.switchTo().alert().accept();
 	}
-	
+
 	/**
 	 * This method is used to cancel alert popup
 	 * @param driver
@@ -269,7 +276,7 @@ public class WebDriverUtility
 	{
 		driver.switchTo().alert().dismiss();
 	}
-	
+
 	/**
 	 * This Method will be used to switch between multiple Windows based on Title
 	 * @param driver
@@ -281,19 +288,19 @@ public class WebDriverUtility
 	{
 		//Step1: Use getWindowhandles to capture all window id's
 		Set<String> windows = driver.getWindowHandles();
-		
+
 		//Step2: Iterate through the windows
 		Iterator<String> it = windows.iterator();
-		
+
 		//Step3: Check whether there is next window
 		while(it.hasNext())
 		{
 			//Step4: Capture current window ID
 			String winId = it.next();
-			
+
 			//Step5: Switch to current window and capture title
 			String currentWinTitle = driver.switchTo().window(winId).getTitle();
-			
+
 			//Step6: Check whether current window is expected
 			if(currentWinTitle.contains(partialTitle))
 			{
@@ -301,7 +308,7 @@ public class WebDriverUtility
 			}
 		}
 	}
-	
+
 	/**
 	 * This method will take screenshot and store it in folder called as Screenshot
 	 * @param driver
@@ -310,26 +317,26 @@ public class WebDriverUtility
 	 * @throws IOException
 	 * @author Manjunath Yadav
 	 */
-	public static String getScreenShot(WebDriver driver,String screenShotName) throws IOException
+	public static void getScreenShot(WebDriver driver,String screenShotName) throws IOException
 	{
-		
+
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		JavaUtility jLib=new JavaUtility();
 		int st = jLib.random();
-//		String sdt = new JavaUtility().formatSystemDate();
+		//		String sdt = new JavaUtility().formatSystemDate();
 		String path="./ScreenShot/"+screenShotName+st+".png";
 		File dest=new File(path);
 		FileUtils.copyFile(src, dest);
-		return path;
+		//		return path;
 	}
-	
+
 	/**
 	 * This method will perform random scroll
 	 * @param driver
 	 * @author Manjunath Yadav
 	 */
-	
+
 	public void scrollAction(WebDriver driver)
 	{
 		JavascriptExecutor js=(JavascriptExecutor)driver;
@@ -341,14 +348,69 @@ public class WebDriverUtility
 	 * @param element
 	 * @author Manjunath Yadav
 	 */
-	
+
 	public void scrollAction(WebDriver driver,WebElement element)
 	{
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		int y = element.getLocation().getY();
 		js.executeScript("window.scrollBy(0,"+y+")", element);
-//		js.executeScript("argument[0].scrollIntoView()", element);
+		//		js.executeScript("argument[0].scrollIntoView()", element);
 	}
-	
+
+	/**
+	 * This method will check for the broken in the web site
+	 * @param driver
+	 * @param webUrl
+	 */
+	public void brokenLink(WebDriver driver,String webUrl) 
+	{
+		driver.get(webUrl);
+		List<WebElement> allLinks = driver.findElements(By.xpath("//a"));
+		int count = allLinks.size();
+		System.out.println(count);
+		List<String> listOfLink = new ArrayList<String>();
+		List<String> brokenLink = new ArrayList<String>();
+		for (WebElement wb : allLinks) 
+		{
+			String link = wb.getAttribute("href");
+			if(link!=null)
+			{
+				if(link.contains("http"))
+				{
+					listOfLink.add(link);
+				}
+				else
+				{
+					brokenLink.add(link+" ===> Not Having HTTP Protocol");
+				}
+			}
+			else
+			{
+				brokenLink.add(link +" ==> Null" );
+			}
+			System.out.println(link);
+
+		}
+		for (String link : listOfLink) 
+		{
+			try {
+				URL url=new URL(link);
+				URLConnection urlCon = url.openConnection();
+				HttpURLConnection httpUrlCon = (HttpURLConnection)urlCon;
+				int statusCode = httpUrlCon.getResponseCode();
+				String respoMsg = httpUrlCon.getResponseMessage();
+				if(statusCode>=400)
+				{
+					brokenLink.add(link+" ==> Status code : "+statusCode+" ==>Response Msg :"+respoMsg);
+				}
+			}
+			catch (Exception e) 
+			{
+				brokenLink.add(link+" ===> Not Connected to Server ");
+			}
+		}
+		System.out.println(brokenLink);
+		System.err.println(brokenLink.size());
+	}
 
 }

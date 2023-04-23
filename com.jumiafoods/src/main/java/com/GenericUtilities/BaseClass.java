@@ -36,13 +36,13 @@ public class BaseClass
 		dLib.connectToDB();
 		Reporter.log("--Connect to DB--",true);
 	}
-//	@Parameters("BROWSER")String BROWSER
+	@Parameters("BROWSER")
 	@BeforeClass(alwaysRun = true)                                                                                                                                       
-	public void configBC() throws IOException
+	public void configBC(String BROWSER) throws IOException
 	{
 		String URL = fLib.readFromPropertyFile("Aurl");
 		
-		String BROWSER = fLib.readFromPropertyFile("fbrowser");
+//		String BROWSER = fLib.readFromPropertyFile("fbrowser");
 		if(BROWSER.equalsIgnoreCase("chrome"))
 		{
 			WebDriverManager.chromedriver().setup();
