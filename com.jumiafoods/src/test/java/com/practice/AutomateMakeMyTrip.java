@@ -4,9 +4,14 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
@@ -26,13 +31,23 @@ public class AutomateMakeMyTrip
 		driver.get("https://www.makemytrip.com/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//span[@class='ic_circularclose_grey']")).click();
-		Assert.fail();
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		Actions act = new Actions(driver);
+		WebDriverWait wait=new WebDriverWait(driver, 10);
+		
+		WebElement frame = driver.findElement(By.xpath("//iframe[@title='notification-frame-173061603']"));
+		driver.switchTo().frame(frame);
+		
+		WebElement popup = driver.findElement(By.xpath("//a[@id='webklipper-publisher-widget-container-notification-close-div']"));
+		wait.until(ExpectedConditions.visibilityOf(popup));
+		js.executeScript("arguments[0].click()", popup);
+		
+//		WebElement popup = driver.findElement(By.xpath("//span[@class='ic_circularclose_grey']")).click();
 		driver.findElement(By.xpath("//li[@data-cy='roundTrip']")).click();
 		driver.findElement(By.xpath("//input[@id='fromCity']")).sendKeys("Bengaluru");
 		driver.findElement(By.xpath("//p[.='Bengaluru, India']")).click();
 		driver.findElement(By.xpath("//input[@id='toCity']")).sendKeys("Goa");
-		driver.findElement(By.xpath("//p[.='Goa (North) - Mopa Airport, India']")).click();
+		driver.findElement(By.xpath("//p[.='Goa - Dabolim Airport, India']")).click();
 		
 //		System Date
 		Date cdt=new Date();
@@ -43,14 +58,15 @@ public class AutomateMakeMyTrip
 		String year = d[5];
 		String travelDate = day+" "+month+" "+date+" "+year;
 
+		
 		driver.findElement(By.xpath("//div[@aria-label='"+travelDate+"']")).click();
 		
 
-		//		Fri May 12 2023
+		//		Fri Aug 12 2023
 
-		String rday = "Fri";
-		String rmonth = "May";
-		String rdate = "12";
+		String rday = "Sat";
+		String rmonth = "Sep";
+		String rdate = "09";
 		String ryear = "2023";
 		String returnDate = rday+" "+rmonth+" "+rdate+" "+ryear;
 
@@ -81,7 +97,7 @@ public class AutomateMakeMyTrip
 		WebDriverUtility wLib = new WebDriverUtility();
 		wLib.getScreenShot(driver, "FlightDetails");
 		
-		driver.close();
+//		driver.close();
 		
 
 	}
